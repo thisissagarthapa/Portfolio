@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio website</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <!-- Alertify css Link -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Alertify Js -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/port.css' %}">
+</head>
+<body>    
+    <!-- Header design -->
+    <header class="header">
+        <a href="#" class="logo">Portfolio</a>
+        <i class="bx bx-menu" id="menu-icon"></i>
+        <navbar class="navbar">
+            <a href="{% url 'index' %}" class="{% if request.path == '/' %} active{% endif %} ">Home</a>
+            <a href="{% url 'about' %}" class="{% if request.path == '/about/' %} active  {% endif %}">About</a>
+            <a href="{% url 'service' %}" class="{% if request.path == '/service/' %} active  {% endif %}">Service</a>
+            <a href="{% url 'projects' %}" class="{% if request.path == '/projects/' %} active  {% endif %}">Portfolio</a>
+            <a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %} active  {% endif %}">Contact</a>
+        </navbar>
+    </header>
+
+    {% block content %}
+      
+    {% endblock content %}
+
+    <!-- Footer design -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>copyright &copy; {{date}} by <span>Sagar Thapa</span>| All rights reserved</p>
+        </div>
+          {% block footer_iconTop %}
+        <div class="footer-iconTop">
+            <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+        {% endblock footer_iconTop %}
+    </footer>
+    
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="{% static 'js/port.js' %}"></script>
+</body>
+</html>

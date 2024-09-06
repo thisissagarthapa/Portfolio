@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+ <!-- Services section design -->
+    <section class="services" id="service">
+        <div class="service-img">
+            <img src="{% static 'images/240_F_214879686_R3HFJlk6WLr1kcdvy6Q9rtNASKN0BZBS.jpg' %}" alt="images">
+        </div>
+        <div class="services-container">
+            <h2 class="heading"> My <span>service</span></h2>
+            <h3><i class='bx bx-code-alt'></i>Web Development</h3>
+            <p>I am a beginner web developer, passionate about learning and eager to contribute to exciting projects. With a solid foundation in web technologies, I am dedicated to enhancing my skills and bringing creative ideas to life.</p>
+            <!-- <a href="#" class="btn">Read More</a>    -->
+        </div>
+    </section>
+
+     {% block footer_iconTop %}
+
+        {% endblock footer_iconTop %}
+
+{% endblock content %}

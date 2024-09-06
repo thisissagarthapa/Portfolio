@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}    
+     <!-- Alertify for form -->
+{% if messages %} {% for message in messages %}
+<script>
+  alertify.set("notifier", "position", "top-left");
+  alertify.success("{{message}}");
+</script>
+{% endfor %} {% endif %}
+    <!-- Home section design -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello it's me</h3>
+            <h1>Sagar Thapa</h1>
+            <h3>and I'm a <span class="multiple-text">Python Developer</span></h3> 
+            <div class="social-media">
+                <a target="_blank" href="https://www.facebook.com/profile.php?id=100078644620461"><i class="bx bxl-facebook"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/sagar-thapa-a25657305/"><i class="bx bxl-linkedin"></i></a>            
+                <a target="_blank" href="https://github.com/thisissagarthapa"><i class="bx bxl-github"></i></a>            
+            </div>
+            <a href="{% url 'download_cv' %}" class="btn">Download CV</a>
+        </div>
+        <div class="home-img">
+            <img src="{% static 'images/1706075070419-Standard.png' %}" alt="sagar">
+        </div>
+    </section>
+
+    <!-- About section design -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="{% static 'images/af3b0d0833834050a26a4c229f97a9bd.jpg' %}" alt="images">
+        </div>
+<div class="about-content">
+    <h2 class="heading">About <span>me</span></h2>
+    <h3>Python Developer</h3>
+    <p>👋 Hello there! I'm <span>Sagar Thapa</span>, a passionate and highly motivated Python developer, with a focus on <strong>Django</strong> and an eye for creating visually stunning and user-friendly web experiences. I have a background in <span>Bachelor Of Computer Application</span>, which helps me combine technical skills and creativity in every project.</p>        
+    <p>🚀 I’m always looking to expand my knowledge and skills by building projects, learning along the way, and adapting to new challenges. My goal is to master <strong>Django</strong> and transition into a full-stack developer while also exploring the exciting field of <strong>Data Science</strong> to integrate it into my future projects.</p>
+    <p>🔧 With a deep passion for technology, I bring a unique blend of enthusiasm and adaptability. I am quick to embrace new tools, thrive in dynamic environments, and eagerly seek opportunities to grow and solve complex problems. Whether it's web development, project management, or diving into data analytics, I am excited to contribute and learn as I go.</p>        
+    <!-- <a href="#" class="btn">Read More</a> -->
+</div>
+
+    </section>
+
+    <!-- Services section design -->
+ <!-- Services section design -->
+<section class="services" id="service">
+    <div class="service-img">
+        <img src="{% static 'images/240_F_214879686_R3HFJlk6WLr1kcdvy6Q9rtNASKN0BZBS.jpg' %}" alt="images">
+    </div>
+    <div class="services-container">
+        <h2 class="heading"> My <span>Services</span></h2>
+
+        <!-- Web Development Service -->
+        <div class="service-box">
+            <h3><i class='bx bx-code-alt'></i>Web Development</h3>
+            <p>I am a beginner web developer, passionate about learning and eager to contribute to exciting projects. With a solid foundation in web technologies, I am dedicated to enhancing my skills and bringing creative ideas to life. I work primarily with Python, Django, HTML, CSS, and JavaScript to build responsive, user-friendly websites.</p>
+        </div>
+
+        <!-- Django Development Service -->
+        <div class="service-box">
+            <h3><i class='bx bx-server'></i>Django Development</h3>
+            <p>As a Python enthusiast focusing on Django, I create dynamic and scalable web applications. From user authentication systems to RESTful APIs, I can help you develop robust backends for your projects, ensuring efficiency and maintainability.</p>
+        </div>
+
+        <!-- Data Analysis and Visualization Service -->
+        <div class="service-box">
+            <h3><i class='bx bx-line-chart'></i>Data Analysis & Visualization</h3>
+            <p>With an interest in data science, I can assist in analyzing datasets, uncovering trends, and providing insightful visualizations using tools like NumPy, Pandas, and Matplotlib. Whether it's for business insights or project-based analytics, I can help bring your data to life.</p>
+        </div>
+        <!-- <a href="#" class="btn">Read More</a> -->
+    </div>
+</section>
+
+    <!-- Portfolio design section -->
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">Latest <span>Project</span></h2>
+
+        <div class="portfolio-container">
+              
+         {% for i in data  %}
+            <div class="portfolio-box">
+                <img src="{{i.image.url}}" alt="">
+                <div class="portfolio-layer">
+                    <h4>{{i.title}} <span>App</span></h4>
+                    <p>{{i.desc}}</p>
+                    <a target="_blank" href="{{i.link}}"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </section>
+
+ 
+<!-- contact  section design -->
+<section class="contact" id="contact">
+<h2 class="heading">Contact <span>Me</span></h2>
+<form method="POST" action="{% url 'index' %}">
+    {% csrf_token %}
+    <div class="input-box">
+        <input type="text" name="name" placeholder="Full Name">
+        <input type="email" name="email" placeholder="Email Address">
+    </div>
+    <div class="input-box">
+        <input type="number" name="phoneno" placeholder="Phone Number">
+        <input type="text" name="emailsub" placeholder="Email Subject">
+    </div>
+    <textarea name="message" id="" cols="30" rows="10" name  placeholder="your message"></textarea>
+    <input type="submit" value="Send Message" class="btn">
+</form>
+</section>
+  </section>
+
+{% endblock content %}
+

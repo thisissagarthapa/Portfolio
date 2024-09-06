@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <!-- Portfolio design section -->
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">Latest <span>Project</span></h2>
+
+        <div class="portfolio-container">
+              
+         {% for i in data  %}
+            <div class="portfolio-box">
+                <img src="{{i.image.url}}" alt="">
+                <div class="portfolio-layer">
+                    <h4>{{i.title}} <span>App</span></h4>
+                    <p>{{i.desc}}</p>
+                    <a href="{{i.link}}"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </section>
+    
+         {% block footer_iconTop %}
+
+        {% endblock footer_iconTop %}
+{% endblock content %}
